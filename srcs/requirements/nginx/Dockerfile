@@ -16,6 +16,4 @@ RUN     ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/d
 
 EXPOSE	443
 
-EXPOSE 80
-
 ENTRYPOINT [ "sh", "/tmp/nginx.sh" ]
