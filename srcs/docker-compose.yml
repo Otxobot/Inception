@@ -1,0 +1,69 @@
+## DOCKER-COMPOSE FILE ##
+
+version: '3.8'
+
+services:
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    image: mariadb
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: always
+    networks:
+      - incepnetwork
+
+  wordpress:
+    build: 
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    image: wordpress
+    depends_on:
+      - mariadb
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+    restart: always
+    networks:
+      - incepnetwork
+
+  nginx:
+    build: 
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    image: nginx
+    depends_on:
+      - wordpress
+    container_name: nginx
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "443:443"
+    restart: always
+    networks:
+      - incepnetwork
+
+networks:
+  incepnetwork:
+    driver: bridge
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/otsarri/data/mysql
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/otsarri/data/html
+      o: bind
