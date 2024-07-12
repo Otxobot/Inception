@@ -59,11 +59,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/otsarri/data/mysql
+      device: /home/abasante/data/mysql
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /home/otsarri/data/html
+      device: /home/abasante/data/html
       o: bind

@@ -19,4 +19,4 @@ else
 
 fi
 
-exec "$@"cd
+exec "$@"

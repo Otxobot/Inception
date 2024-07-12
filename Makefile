@@ -5,10 +5,16 @@ build:
 	docker-compose --file ./srcs/docker-compose.yml build
 
 datadir_create:
-	@mkdir -p $(HOME)/data/html
-	@mkdir -p $(HOME)/data/mysql
-	@sudo chown -R $(USER) $(HOME)/data/html
-	@sudo chmod -R 777 $(HOME)/data/mysql
+	@mkdir -p /home/abasante/data/html
+	@mkdir -p /home/abasante/data/mysql
+	@sudo chown -R $(USER) /home/abasante/data/html
+	@sudo chmod -R 777 /home/abasante/data/mysql
+
+stop_containers:
+	docker stop `docker ps -qa`
+	docker rm `docker ps -qa`
+	docker rmi -f `docker images -qa`
+	docker volume rm `docker volume ls -q`
 
 inceptiondir_create:
 	mkdir -p srcs/requirements/mariadb/conf
@@ -23,7 +29,7 @@ stop_nginx_and_up:
 	docker-compose --file ./srcs/docker-compose.yml up -d
 
 datadir_delete:
-	sudo rm -rf $(HOME)/data
+	sudo rm -rf /home/abasante/data
 
 abasante.42.fr:
 	sudo sed -i 's|localhost|abasante.42.fr|g' /etc/hosts
