@@ -10,7 +10,6 @@ Inception is a system administration project focused on containerization using D
 - **Nginx** – As a reverse proxy and web server.
 - **WordPress** – Content management system (CMS).
 - **MariaDB** – SQL database for WordPress.
-- **Redis (Optional)** – Caching system for optimization.
 - **Linux** – Base environment for deployment.
 
 ## 📌 Key Features
