@@ -18,3 +18,32 @@ Inception is a system administration project focused on containerization using D
 - Secure setup with user permissions and SSL/TLS encryption.
 - Data persistence using volumes and bind mounts.
 - Automated service startup and networking configuration.
+
+## 📂 Project Structure
+
+.
+├── Makefile
+├── README.md
+└── srcs
+    ├── docker-compose.yml
+    └── requirements
+        ├── mariadb
+        │   ├── conf
+        │   │   ├── init.sql
+        │   │   └── my.cnf
+        │   ├── Dockerfile
+        │   └── script
+        │       └── mariadb.sh
+        ├── nginx
+        │   ├── conf
+        │   │   ├── default.conf
+        │   │   └── nginx.conf
+        │   ├── Dockerfile
+        │   └── script
+        │       └── nginx.sh
+        └── wordpress
+            ├── conf
+            │   └── www.conf
+            ├── Dockerfile
+            └── script
+                └── wordpress.sh
