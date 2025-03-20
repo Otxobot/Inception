@@ -20,7 +20,7 @@ Inception is a system administration project focused on containerization using D
 - Automated service startup and networking configuration.
 
 ## 📂 Project Structure
-
+```
 .
 ├── Makefile
 ├── README.md
@@ -47,3 +47,4 @@ Inception is a system administration project focused on containerization using D
             ├── Dockerfile
             └── script
                 └── wordpress.sh
+```
